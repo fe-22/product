@@ -4,10 +4,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Scanner;
+import my_product.FirstProduct;
 
 public class Main {
 
 	public static void main(String[] args) {
+		
+		
 		
 		
 		LocalDateTime dataAtual = LocalDateTime.now();
@@ -17,42 +20,37 @@ public class Main {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
-	
-		System.out.println("1º Produto............:");
-		String nome1 = sc.next();
-		System.out.println("Preço do 1º Produto..........:");
-		double preco1 = sc.nextDouble();
-		FirstProduct P1 = new FirstProduct(nome1, preco1,0.0);
-	
+		double precoFinal = 0;
+		char opcao;
 		
+		do {
+			
+			System.out.println("Digite o produto...........:");
+			String nome = sc.next();
+			System.out.println("Digite o preço do produto............:");
+			double preco = sc.nextDouble();
+			FirstProduct p = new FirstProduct(nome, preco, 0.1);
+			
+			System.out.println("Nome do produto:" + p.nome);
+			System.out.println("Preço do produto:" + p.preco);
+			System.out.println("Valor com desconto:" + p.precoComDesconto());
+			
+			precoFinal += p.precoComDesconto();
+			
+			System.out.println("Deseja entrar com mais pedido (S/N)?");
+			opcao = sc.next().charAt(0);
+		}while(opcao == 'S'|| opcao == 's');
 		
-		System.out.println("2º Produto............:");
-		String nome2 = sc.next();
-		System.out.println("Preço do 2º Produto..........:");
-		double preco2 = sc.nextDouble();
-		FirstProduct P2 = new FirstProduct(nome2, preco2,0.0);
-		
-		System.out.println("Nome do Produto:" + P1.nome);
-		System.out.println("Valor Unitário:" + P1.preco);
-		System.out.println("Valor com desconto: " + P1.precoComDesconto());
-		
-		
-		System.out.println("Nome do Produto:" + P2.nome);
-		System.out.println("Valor Unitário:" + P2.preco);
-		System.out.println("Valor com desconto: " + P2.precoComDesconto());
-		
-	
-		
-		double PrecoFinal = P1.precoComDesconto() + P2.precoComDesconto();
-		System.out.println("Valor Total da Compra:" + PrecoFinal);
+		System.out.println("Valor total da compra:" + "R$" + precoFinal);
 		
 		System.out.println("Data da compra:" + dataFormatada);
 		
 		
-		sc.close();
+			sc.close();
 		
-	
-
+		
 	}
-
+	
 }
+		
+          
