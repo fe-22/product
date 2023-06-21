@@ -1,32 +1,19 @@
 package my_product;
 
-
-
 public class FirstProduct {
 
-	String nome;
-	double preco;
-	double taxaDeDesconto;
+	String name;
+	double price;
+	double discontRate;
+	double discontePrice;
+	public FirstProduct(String name, double price, double discontRate) {
+		
+		this.name = name;
+		this.price = price;
+		this.discontRate = discontRate;
+		this.discontePrice = price - (price * discontRate / 100);
+	}
 
 
-	
-	public FirstProduct(String nome, double preco, double taxaDeDesconto ) {
-	
-		this.nome = nome;
-		this.preco = preco;
-		this.taxaDeDesconto = taxaDeDesconto;
-		
-		
-		}
-	
-	public double precoComDesconto() {
-		return preco * (1-taxaDeDesconto);
-	}
-	
-	public double valorFinal() {
-		return precoComDesconto();
-	}
-	
+
 }
-	
-
